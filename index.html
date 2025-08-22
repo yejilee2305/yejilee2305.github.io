@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yeji Lee — Portfolio</title>
+  <meta name="description" content="Portfolio of Yeji Lee — Computer Science student at Michigan State University. Projects, education, skills, and contact." />
+  <meta name="robots" content="index,follow" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Yeji Lee — Portfolio" />
+  <meta property="og:description" content="Front-end & full-stack aspiring engineer. Projects, education, and skills." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] } } },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    :root{--ring:rgba(99,102,241,.35)}
+    .wrap{max-width:1100px}
+    .grad-text{background:linear-gradient(92deg,#7c3aed 0%,#06b6d4 50%,#22c55e 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-rule{background-image:linear-gradient(to right, rgba(124,58,237,.35),rgba(6,182,212,.35));height:1px}
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.5));}
+    .glass-dark{background:linear-gradient(180deg, rgba(2,6,23,.7), rgba(2,6,23,.5));}
+    .blob{position:absolute;filter:blur(48px);opacity:.28;pointer-events:none;border-radius:9999px}
+    .b1{background:radial-gradient(circle at 50% 50%,#a78bfa,transparent 60%);width:420px;height:420px;top:-60px;left:-60px}
+    .b2{background:radial-gradient(circle at 50% 50%,#22d3ee,transparent 60%);width:360px;height:360px;right:-40px;top:30%}
+    .b3{background:radial-gradient(circle at 50% 50%,#34d399,transparent 60%);width:420px;height:420px;left:35%;bottom:-120px}
+    @media (prefers-reduced-motion:no-preference){
+      .float-slow{animation:float 18s ease-in-out infinite}
+      .float-med{animation:float 22s ease-in-out infinite}
+      .float-late{animation:float 26s ease-in-out infinite}
+      @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(10px)}}
+      .reveal{opacity:0;transform:translateY(14px);transition:all .7s cubic-bezier(.2,.7,.2,1)}
+      .reveal.show{opacity:1;transform:none}
+      .headline{background-size:200% 100%;background-position:0 0;transition:background-position .8s ease}
+      .headline:hover{background-position:100% 0}
+    }
+    .pill{display:inline-block;padding:.42rem .68rem;border-radius:9999px;border:1px solid rgba(148,163,184,.35);backdrop-filter:saturate(140%) blur(2px)}
+    .card{position:relative}
+    .card::after{content:"";position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(6,182,212,.25));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .tilt{transform-style:preserve-3d;will-change:transform}
+    .tilt:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2.5deg) translateZ(2px)}
+    :focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:8px}
+    .sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;clip:auto;white-space:normal}
+  </style>
+  <script>
+    // Persist dark theme
+    (() => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Yeji Lee",
+    "email":"mailto:leeyeji2305@outlook.com",
+    "jobTitle":"Computer Science Student",
+    "affiliation":{"@type":"CollegeOrUniversity","name":"Michigan State University"},
+    "sameAs":["https://github.com/yejilee2305","https://www.linkedin.com/in/yeji-lee2003"]
+  }
+  </script>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans subpixel-antialiased font-medium">
+
+  <!-- Skip to content -->
+  <a href="#main" class="sr-only sr-only-focusable absolute left-4 top-3 z-[1000] px-3 py-1 rounded bg-black text-white dark:bg-white dark:text-black">Skip to content</a>
+
+  <!-- soft decorative blobs -->
+  <div class="blob b1 float-slow" aria-hidden="true"></div>
+  <div class="blob b2 float-med" aria-hidden="true"></div>
+  <div class="blob b3 float-late" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 border-b border-white/30 dark:border-slate-800/60 backdrop-blur">
+    <nav aria-label="Primary" class="wrap mx-auto px-5 py-3 flex items-center justify-between rounded-b-xl glass dark:glass-dark">
+      <a href="#home" class="font-extrabold tracking-tight grad-text">Yeji Lee</a>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#education" class="hover:underline">Education</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#experience" class="hover:underline">Experience</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+        <button id="themeBtn" type="button" class="ml-1 px-2 py-1 rounded border border-slate-300/70 dark:border-slate-700/70" aria-label="Toggle dark mode">🌓</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap mx-auto px-5" tabindex="-1">
+    <!-- HERO -->
+    <section id="home" class="py-14 sm:py-18 relative" aria-labelledby="hero-title">
+      <div class="reveal">
+        <h1 id="hero-title" class="text-5xl sm:text-6xl font-extrabold leading-[1.05] headline grad-text" style="background-image:linear-gradient(92deg,#7c3aed,#06b6d4,#22c55e);">
+          Yeji Lee
+        </h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
+          I’m Yeji, a Computer Science student at Michigan State University (Business minor) focused on front-end and full-stack development.
+        </p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="#projects" class="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black shadow hover:opacity-90">View Projects</a>
+          <a href="mailto:leeyeji2305@outlook.com" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900">Contact Me</a>
+          
+        </div>
+        <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm">
+          West Bloomfield, MI · <a class="underline" href="mailto:leeyeji2305@outlook.com">leeyeji2305@outlook.com</a> ·
+          <a class="underline" href="https://github.com/yejilee2305" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+          <a class="underline" href="https://linkedin.com/in/yeji-lee2003" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-12" aria-labelledby="about-title">
+      <h2 id="about-title" class="text-2xl font-semibold">About Me</h2>
+      <div class="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl space-y-3 reveal">
+        <p>
+          I am a senior Computer Science student at Michigan State University with a strong foundation in algorithms, systems, and software design, complemented by a minor in Business.
+        </p>
+        <p>
+          I enjoy creating intuitive, user-friendly applications and solving challenging problems with clean, efficient code. My experience ranges from object-oriented programming in C++ to collaborative team projects and leadership roles outside of class.
+        </p>
+        <p>
+          I’m passionate about front-end and full-stack development, with a growing interest in AI and database-driven applications. I thrive in collaborative environments where I can learn from others, contribute ideas, and deliver reliable solutions.
+        </p>
+        <p>
+          My goal is to continue developing technical expertise while applying creativity and teamwork to impactful software projects.
+        </p>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-12" aria-labelledby="edu-title">
+      <h2 id="edu-title" class="text-2xl font-semibold">Education</h2>
+      <div class="mt-6 grid md:grid-cols-[auto,1fr] gap-6 reveal">
+        <div class="relative" aria-hidden="true">
+          <div class="h-full w-px bg-slate-200 dark:bg-slate-800 absolute left-3 top-0"></div>
+          <div class="relative z-10 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-violet-500 flex items-center justify-center">
+            <span class="w-2.5 h-2.5 bg-violet-500 rounded-full"></span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-semibold">Michigan State University — East Lansing, MI</h3>
+          <p class="text-slate-700 dark:text-slate-300">B.S. in Computer Science · Minor in Business</p>
+          <p class="text-sm text-slate-500">Sep 2022 – Dec 2025</p>
+          <div class="mt-3">
+            <h4 class="font-medium">Relevant Coursework</h4>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">Algorithm Engineering</span>
+              <span class="pill">Introduction to AI</span>
+              <span class="pill">Database Systems</span>
+              <span class="pill">Computer Systems</span>
+              <span class="pill">Object-Oriented Software Design</span>
+              <span class="pill">Discrete Mathematics</span>
+              <span class="pill">Data Structures & Algorithms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-12" aria-labelledby="proj-title">
+      <div class="reveal">
+        <h2 id="proj-title" class="text-2xl font-semibold">Projects</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <!-- Aquarium -->
+          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="aquarium-title">
+            <h3 id="aquarium-title" class="font-semibold">Aquarium Simulation — Interactive OOP App (C++ / wxWidgets)</h3>
+            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+              Real-time aquarium where fish swim and reverse at edges. Each fish subclass has unique animations.
+              Includes user interaction to add/remove fish at runtime; showcases inheritance and polymorphism.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
+              <span class="pill">C++</span><span class="pill">wxWidgets</span><span class="pill">OOP</span>
+            </div>
+            <div class="mt-4 flex items-center gap-4 text-sm">
+              <a class="underline" href="https://github.com/yejilee2305/Aquarium" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+
+          <!-- Sparty’s Boots -->
+          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="sparty-title">
+            <h3 id="sparty-title" class="font-semibold">Sparty’s Boots — Logic Game (C++ / wxWidgets)</h3>
+            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+              Simulates logic circuits using conveyor belts and gates (AND, OR, NOT, flip-flops).
+              Sparty kicks products based on sensor logic. Implemented with Visitor & Observer design patterns.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
+              <span class="pill">C++</span><span class="pill">wxWidgets</span>
+              <span class="pill">Visitor Pattern</span><span class="pill">Observer Pattern</span>
+            </div>
+            <div class="mt-4 flex items-center gap-4 text-sm">
+              <a class="underline" href="https://github.com/yejilee2305/CSE335_project1" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-12" aria-labelledby="exp-title">
+      <div class="reveal">
+        <h2 id="exp-title" class="text-2xl font-semibold">Experience</h2>
+        <div class="mt-6 grid gap-6">
+          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 class="font-medium">Team Lead · Panera Bread — East Lansing, MI</h3>
+              <span class="text-sm text-slate-500">May 2024 – Present</span>
+            </div>
+            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Supervised and trained FOH staff to maintain efficient workflows and safety standards.</li>
+              <li>Improved team communication and problem-solving; delivered consistently positive experiences.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 class="font-medium">Cashier · Panera Bread — West Bloomfield, MI</h3>
+              <span class="text-sm text-slate-500">Jan 2022 – Jun 2024</span>
+            </div>
+            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Managed transactions and prepared products while keeping equipment clean and safe.</li>
+              <li>Developed interpersonal, time-management, and conflict-resolution skills.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-12" aria-labelledby="skills-title">
+      <div class="reveal">
+        <h2 id="skills-title" class="text-2xl font-semibold">Skills</h2>
+        <div class="mt-6 grid sm:grid-cols-3 gap-6">
+          <div>
+            <h3 class="font-medium">Programming</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">Python</span>
+              <span class="pill">C++</span>
+              <span class="pill">ARM Assembly (Familiar)</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Tools & Technologies</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">GitHub</span><span class="pill">GitLab</span>
+              <span class="pill">VS Code</span><span class="pill">CLion</span><span class="pill">PuTTY</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Languages</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">English (Fluent)</span>
+              <span class="pill">Korean (Fluent)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12" aria-labelledby="contact-title">
+      <div class="reveal">
+        <h2 id="contact-title" class="text-2xl font-semibold">Contact</h2>
+        <p class="mt-2 text-slate-700 dark:text-slate-300">
+          <a class="underline" href="mailto:leeyeji2305@outlook.com">leeyeji2305@outlook.com</a> ·
+          <a class="underline" href="https://github.com/yejilee2305" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+          <a class="underline" href="https://linkedin.com/in/yeji-lee2003" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 border-t border-white/30 dark:border-slate-800/60 bg-white/40 dark:bg-slate-950/40 backdrop-blur">
+    <div class="wrap mx-auto px-5 text-sm text-slate-600 dark:text-slate-400 flex items-center justify-between">
+      <span>© <span id="year"></span> Yeji Lee</span>
+      <a href="#home" class="underline">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const r = document.documentElement;
+      const isDark = r.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Reveal on scroll
+    const els=[...document.querySelectorAll('.reveal')];
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
