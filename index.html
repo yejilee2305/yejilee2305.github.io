@@ -71,7 +71,7 @@
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Yeji Lee",
-    "email":"mailto:leeyeji2305@outlook.com",
+    "email":"mailto:leeyeji@msu.edu",
     "jobTitle":"Computer Science Student",
     "affiliation":{"@type":"CollegeOrUniversity","name":"Michigan State University"},
     "sameAs":["https://github.com/yejilee2305","https://www.linkedin.com/in/yeji-lee2003"]
@@ -92,14 +92,28 @@
   <header class="sticky top-0 z-50 border-b border-white/30 dark:border-slate-800/60 backdrop-blur">
     <nav aria-label="Primary" class="wrap mx-auto px-5 py-3 flex items-center justify-between rounded-b-xl glass dark:glass-dark">
       <a href="#home" class="font-extrabold tracking-tight grad-text">Yeji Lee</a>
-      <div class="flex items-center gap-4 text-sm">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#education" class="hover:underline">Education</a>
-        <a href="#projects" class="hover:underline">Projects</a>
+      <!-- Mobile menu button -->
+      <button id="menuBtn" type="button" class="sm:hidden px-2 py-1 rounded border border-slate-300/70 dark:border-slate-700/70" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Desktop nav -->
+      <div id="navLinks" class="hidden sm:flex items-center gap-4 text-sm">
         <a href="#experience" class="hover:underline">Experience</a>
+        <a href="#projects" class="hover:underline">Projects</a>
         <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#education" class="hover:underline">Education</a>
         <a href="#contact" class="hover:underline">Contact</a>
         <button id="themeBtn" type="button" class="ml-1 px-2 py-1 rounded border border-slate-300/70 dark:border-slate-700/70" aria-label="Toggle dark mode">🌓</button>
+      </div>
+      <!-- Mobile nav dropdown -->
+      <div id="mobileNav" class="hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 py-4 px-5 sm:hidden">
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="#experience" class="hover:underline">Experience</a>
+          <a href="#projects" class="hover:underline">Projects</a>
+          <a href="#skills" class="hover:underline">Skills</a>
+          <a href="#education" class="hover:underline">Education</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </div>
       </div>
     </nav>
   </header>
@@ -112,15 +126,18 @@
           Yeji Lee
         </h1>
         <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
-          I’m Yeji, a Computer Science student at Michigan State University (Business minor) focused on front-end and full-stack development.
+          Software Engineer building microservices that cut integration time by 45%. Full-stack developer with experience in React, FastAPI, AWS, and network protocol engineering.
+        </p>
+        <p class="mt-2 text-sm text-violet-600 dark:text-violet-400 font-medium">
+          Seeking full-time Software Engineering roles starting December 2025
         </p>
         <div class="mt-5 flex flex-wrap items-center gap-3">
-          <a href="#projects" class="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black shadow hover:opacity-90">View Projects</a>
-          <a href="mailto:leeyeji2305@outlook.com" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900">Contact Me</a>
-          
+          <a href="#experience" class="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black shadow hover:opacity-90">View Experience</a>
+          <a href="mailto:leeyeji@msu.edu" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900">Contact Me</a>
+          <a href="resume.pdf" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900" download>Download Resume</a>
         </div>
         <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm">
-          West Bloomfield, MI · <a class="underline" href="mailto:leeyeji2305@outlook.com">leeyeji2305@outlook.com</a> ·
+          West Bloomfield, MI · <a class="underline" href="mailto:leeyeji@msu.edu">leeyeji@msu.edu</a> ·
           <a class="underline" href="https://github.com/yejilee2305" target="_blank" rel="noopener noreferrer">GitHub</a> ·
           <a class="underline" href="https://linkedin.com/in/yeji-lee2003" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </p>
@@ -129,22 +146,171 @@
 
     <div class="section-rule" role="presentation" aria-hidden="true"></div>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-12" aria-labelledby="about-title">
-      <h2 id="about-title" class="text-2xl font-semibold">About Me</h2>
-      <div class="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl space-y-3 reveal">
-        <p>
-          I am a senior Computer Science student at Michigan State University with a strong foundation in algorithms, systems, and software design, complemented by a minor in Business.
-        </p>
-        <p>
-          I enjoy creating intuitive, user-friendly applications and solving challenging problems with clean, efficient code. My experience ranges from object-oriented programming in C++ to collaborative team projects and leadership roles outside of class.
-        </p>
-        <p>
-          I’m passionate about front-end and full-stack development, with a growing interest in AI and database-driven applications. I thrive in collaborative environments where I can learn from others, contribute ideas, and deliver reliable solutions.
-        </p>
-        <p>
-          My goal is to continue developing technical expertise while applying creativity and teamwork to impactful software projects.
-        </p>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-12" aria-labelledby="exp-title">
+      <div class="reveal">
+        <h2 id="exp-title" class="text-2xl font-semibold">Experience</h2>
+        <div class="mt-6 grid gap-6">
+          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 class="font-medium">Software Engineer · MSU Capstone — Vectra AI</h3>
+              <span class="text-sm text-slate-500">Aug 2023 – Dec 2025</span>
+            </div>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Corporate-sponsored capstone project developing software for Vectra AI</p>
+            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Built an end-to-end orchestration pipeline with FastAPI microservices connecting discovery, extraction, generation, and validation tasks, cutting manual integration time by 45%.</li>
+              <li>Created a web crawler that scraped and normalized 35+ RFCs from a multitude of mirrors to automate network protocol discovery and the dataset creation process.</li>
+              <li>Engineered multi-packet flow and TCP variant generators generating 3-5 packet exchanges per session, validated with Wireshark dissectors for accuracy.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 class="font-medium">Mechanical / Software Design Member · Formula SAE, Michigan State University</h3>
+              <span class="text-sm text-slate-500">Aug 2022 – May 2023</span>
+            </div>
+            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Designed a customized tire rack that increased pit garage functionality by 20%.</li>
+              <li>Collaborated with 10+ engineers on CAD modeling, part fabrication, and assembly.</li>
+              <li>Implemented simulation-based checks to validate weight and stability testing requirements.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
+            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 class="font-medium">Team Lead · Panera Bread — East Lansing, MI</h3>
+              <span class="text-sm text-slate-500">May 2024 – Nov 2025</span>
+            </div>
+            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Lead and train 6-8 employees per shift, achieving 100+ transactions/hour with 98% order accuracy.</li>
+              <li>Developed task rotation system that decreased wait time by 2 min and improved efficiency by 15%.</li>
+              <li>Maintained zero-incident safety record across all supervised shifts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-12" aria-labelledby="proj-title">
+      <div class="reveal">
+        <h2 id="proj-title" class="text-2xl font-semibold">Projects</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <!-- TaskFlow -->
+          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="taskflow-title">
+            <h3 id="taskflow-title" class="font-semibold">TaskFlow — Full Stack Productivity App</h3>
+            <ul class="mt-2 list-disc pl-4 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Built React + FastAPI task management app with real-time updates</li>
+              <li>Developed RESTful APIs with PostgreSQL and SQLAlchemy ORM</li>
+              <li>Deployed on AWS EC2 with Docker/NGINX achieving 99.9% uptime</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
+              <span class="pill">React</span><span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Docker</span><span class="pill">AWS</span>
+            </div>
+          </article>
+
+          <!-- Packet Forge -->
+          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="packetforge-title">
+            <h3 id="packetforge-title" class="font-semibold">Packet Forge — Network Protocol Engine</h3>
+            <ul class="mt-2 list-disc pl-4 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Created PCAP generator producing 90+ RFC-compliant packet flows</li>
+              <li>Built CLI integrating 3 RFC mirrors, mapping 35+ protocols</li>
+              <li>Generated 5-12 stateful packets per session for realistic testing</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
+              <span class="pill">Python</span><span class="pill">PCAP</span><span class="pill">Wireshark</span><span class="pill">CLI</span>
+            </div>
+          </article>
+
+          <!-- Aquarium -->
+          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="aquarium-title">
+            <h3 id="aquarium-title" class="font-semibold">Aquarium Simulation — Interactive OOP App</h3>
+            <ul class="mt-2 list-disc pl-4 text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Built interactive aquarium demonstrating inheritance and polymorphism</li>
+              <li>Implemented 5+ fish behaviors with 15+ dynamic objects at runtime</li>
+              <li>Optimized rendering loop, improving frame rate by 20%</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
+              <span class="pill">C++</span><span class="pill">wxWidgets</span><span class="pill">OOP</span>
+            </div>
+            <div class="mt-4 flex items-center gap-4 text-sm">
+              <a class="underline" href="https://github.com/yejilee2305/Aquarium" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule" role="presentation" aria-hidden="true"></div>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-12" aria-labelledby="skills-title">
+      <div class="reveal">
+        <h2 id="skills-title" class="text-2xl font-semibold">Skills</h2>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h3 class="font-medium">Languages</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">Python</span>
+              <span class="pill">C++</span>
+              <span class="pill">Java</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">SQL</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Frameworks & Libraries</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">React</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">FastAPI</span>
+              <span class="pill">TensorFlow</span>
+              <span class="pill">Pandas</span>
+              <span class="pill">NumPy</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Cloud & DevOps</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">AWS</span>
+              <span class="pill">Docker</span>
+              <span class="pill">Kubernetes</span>
+              <span class="pill">Linux</span>
+              <span class="pill">CI/CD</span>
+              <span class="pill">Git</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Databases & APIs</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">SQLAlchemy</span>
+              <span class="pill">REST APIs</span>
+              <span class="pill">Postman</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Networking & Security</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">Wireshark</span>
+              <span class="pill">PCAP Analysis</span>
+              <span class="pill">Network Protocols</span>
+              <span class="pill">CompTIA Security+</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium">Practices</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <span class="pill">Agile/Scrum</span>
+              <span class="pill">OOP Design</span>
+              <span class="pill">API Design</span>
+              <span class="pill">Testing</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -162,124 +328,17 @@
         </div>
         <div>
           <h3 class="font-semibold">Michigan State University — East Lansing, MI</h3>
-          <p class="text-slate-700 dark:text-slate-300">B.S. in Computer Science · Minor in Business</p>
-          <p class="text-sm text-slate-500">Sep 2022 – Dec 2025</p>
+          <p class="text-slate-700 dark:text-slate-300">Bachelor of Science in Computer Science · Minor in Business</p>
+          <p class="text-sm text-slate-500">Expected Dec 2025 · Dean's List</p>
           <div class="mt-3">
             <h4 class="font-medium">Relevant Coursework</h4>
             <div class="mt-2 flex flex-wrap gap-2 text-sm">
-              <span class="pill">Algorithm Engineering</span>
-              <span class="pill">Introduction to AI</span>
+              <span class="pill">Algorithms & Data Structures</span>
+              <span class="pill">Software Design</span>
               <span class="pill">Database Systems</span>
-              <span class="pill">Computer Systems</span>
-              <span class="pill">Object-Oriented Software Design</span>
-              <span class="pill">Discrete Mathematics</span>
-              <span class="pill">Data Structures & Algorithms</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-rule" role="presentation" aria-hidden="true"></div>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="py-12" aria-labelledby="proj-title">
-      <div class="reveal">
-        <h2 id="proj-title" class="text-2xl font-semibold">Projects</h2>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2">
-          <!-- Aquarium -->
-          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="aquarium-title">
-            <h3 id="aquarium-title" class="font-semibold">Aquarium Simulation — Interactive OOP App (C++ / wxWidgets)</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
-              Real-time aquarium where fish swim and reverse at edges. Each fish subclass has unique animations.
-              Includes user interaction to add/remove fish at runtime; showcases inheritance and polymorphism.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
-              <span class="pill">C++</span><span class="pill">wxWidgets</span><span class="pill">OOP</span>
-            </div>
-            <div class="mt-4 flex items-center gap-4 text-sm">
-              <a class="underline" href="https://github.com/yejilee2305/Aquarium" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-            </div>
-          </article>
-
-          <!-- Sparty’s Boots -->
-          <article class="card tilt rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur" aria-labelledby="sparty-title">
-            <h3 id="sparty-title" class="font-semibold">Sparty’s Boots — Logic Game (C++ / wxWidgets)</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
-              Simulates logic circuits using conveyor belts and gates (AND, OR, NOT, flip-flops).
-              Sparty kicks products based on sensor logic. Implemented with Visitor & Observer design patterns.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2 text-xs" aria-label="Technologies used">
-              <span class="pill">C++</span><span class="pill">wxWidgets</span>
-              <span class="pill">Visitor Pattern</span><span class="pill">Observer Pattern</span>
-            </div>
-            <div class="mt-4 flex items-center gap-4 text-sm">
-              <a class="underline" href="https://github.com/yejilee2305/CSE335_project1" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-rule" role="presentation" aria-hidden="true"></div>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-12" aria-labelledby="exp-title">
-      <div class="reveal">
-        <h2 id="exp-title" class="text-2xl font-semibold">Experience</h2>
-        <div class="mt-6 grid gap-6">
-          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
-            <div class="flex items-baseline justify-between gap-3 flex-wrap">
-              <h3 class="font-medium">Team Lead · Panera Bread — East Lansing, MI</h3>
-              <span class="text-sm text-slate-500">May 2024 – Present</span>
-            </div>
-            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
-              <li>Supervised and trained FOH staff to maintain efficient workflows and safety standards.</li>
-              <li>Improved team communication and problem-solving; delivered consistently positive experiences.</li>
-            </ul>
-          </div>
-
-          <div class="rounded-2xl p-5 bg-white/70 dark:bg-slate-900/60 backdrop-blur card">
-            <div class="flex items-baseline justify-between gap-3 flex-wrap">
-              <h3 class="font-medium">Cashier · Panera Bread — West Bloomfield, MI</h3>
-              <span class="text-sm text-slate-500">Jan 2022 – Jun 2024</span>
-            </div>
-            <ul class="mt-2 list-disc pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-1">
-              <li>Managed transactions and prepared products while keeping equipment clean and safe.</li>
-              <li>Developed interpersonal, time-management, and conflict-resolution skills.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-rule" role="presentation" aria-hidden="true"></div>
-
-    <!-- SKILLS -->
-    <section id="skills" class="py-12" aria-labelledby="skills-title">
-      <div class="reveal">
-        <h2 id="skills-title" class="text-2xl font-semibold">Skills</h2>
-        <div class="mt-6 grid sm:grid-cols-3 gap-6">
-          <div>
-            <h3 class="font-medium">Programming</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-sm">
-              <span class="pill">Python</span>
-              <span class="pill">C++</span>
-              <span class="pill">ARM Assembly (Familiar)</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="font-medium">Tools & Technologies</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-sm">
-              <span class="pill">GitHub</span><span class="pill">GitLab</span>
-              <span class="pill">VS Code</span><span class="pill">CLion</span><span class="pill">PuTTY</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="font-medium">Languages</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-sm">
-              <span class="pill">English (Fluent)</span>
-              <span class="pill">Korean (Fluent)</span>
+              <span class="pill">Artificial Intelligence</span>
+              <span class="pill">Computer Architecture</span>
+              <span class="pill">Mobile App Development</span>
             </div>
           </div>
         </div>
@@ -293,7 +352,7 @@
       <div class="reveal">
         <h2 id="contact-title" class="text-2xl font-semibold">Contact</h2>
         <p class="mt-2 text-slate-700 dark:text-slate-300">
-          <a class="underline" href="mailto:leeyeji2305@outlook.com">leeyeji2305@outlook.com</a> ·
+          <a class="underline" href="mailto:leeyeji@msu.edu">leeyeji@msu.edu</a> ·
           <a class="underline" href="https://github.com/yejilee2305" target="_blank" rel="noopener noreferrer">GitHub</a> ·
           <a class="underline" href="https://linkedin.com/in/yeji-lee2003" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </p>
@@ -315,6 +374,21 @@
       const r = document.documentElement;
       const isDark = r.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', !isOpen);
+    });
+    // Close mobile menu when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
     });
 
     // Reveal on scroll
