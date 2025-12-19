@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yeji Lee — Portfolio</title>
-  <meta name="description" content="Portfolio of Yeji Lee — Computer Science student at Michigan State University. Projects, education, skills, and contact." />
+  <meta name="description" content="Portfolio of Yeji Lee — Software Engineer. Projects, education, skills, and contact." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Yeji Lee — Portfolio" />
-  <meta property="og:description" content="Front-end & full-stack aspiring engineer. Projects, education, and skills." />
+  <meta property="og:description" content="Software engineer focused on front-end and full-stack development. Projects, education, and skills." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <!-- Fonts -->
@@ -72,7 +72,7 @@
     "@type":"Person",
     "name":"Yeji Lee",
     "email":"mailto:leeyeji@msu.edu",
-    "jobTitle":"Computer Science Student",
+    "jobTitle":"Software Engineer, New Grad",
     "affiliation":{"@type":"CollegeOrUniversity","name":"Michigan State University"},
     "sameAs":["https://github.com/yejilee2305","https://www.linkedin.com/in/yeji-lee2003"]
   }
@@ -126,15 +126,15 @@
           Yeji Lee
         </h1>
         <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
-          Computer Science senior at Michigan State University passionate about full-stack development and network engineering. Experience with React, FastAPI, AWS, and building scalable backend systems.
+          Computer Science graduate from Michigan State University passionate about full-stack development and network engineering. Experience with React, FastAPI, AWS, and building scalable backend systems.
         </p>
         <p class="mt-2 text-sm text-violet-600 dark:text-violet-400 font-medium">
-          Seeking full-time Software Engineering roles starting December 2025
+          Seeking full-time Software Engineering roles
         </p>
         <div class="mt-5 flex flex-wrap items-center gap-3">
           <a href="#experience" class="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black shadow hover:opacity-90">View Experience</a>
           <a href="mailto:leeyeji@msu.edu" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900">Contact Me</a>
-          <a href="resume.pdf" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900" download>Download Resume</a>
+          <a href="Yeji_Lee_Resume.pdf" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900" download>Download Resume</a>
         </div>
         <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm">
           West Bloomfield, MI · <a class="underline" href="mailto:leeyeji@msu.edu">leeyeji@msu.edu</a> ·
@@ -340,7 +340,7 @@
         <div>
           <h3 class="font-semibold">Michigan State University — East Lansing, MI</h3>
           <p class="text-slate-700 dark:text-slate-300">Bachelor of Science in Computer Science, College of Engineering · Minor in Business</p>
-          <p class="text-sm text-slate-500">Expected Dec 2025 · Dean's List</p>
+          <p class="text-sm text-slate-500">2022–2025 · Dean's List</p>
           <div class="mt-3">
             <h4 class="font-medium">Relevant Coursework</h4>
             <div class="mt-2 flex flex-wrap gap-2 text-sm">
@@ -379,21 +379,27 @@
   </footer>
 
   <script>
-    // Dark mode toggle
+    // Set footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('themeBtn').addEventListener('click', () => {
-      const r = document.documentElement;
-      const isDark = r.classList.toggle('dark');
+
+    // Dark mode toggle
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
-    // Mobile menu toggle
+    // Mobile menu elements
     const menuBtn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
+
+    // Toggle mobile menu
     menuBtn.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', !isOpen);
+      const isHidden = mobileNav.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isHidden));
     });
+
     // Close mobile menu when clicking a link
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
@@ -402,12 +408,43 @@
       });
     });
 
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const clickedInside =
+        mobileNav.contains(e.target) ||
+        menuBtn.contains(e.target);
+
+      if (!clickedInside && !mobileNav.classList.contains('hidden')) {
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu with Escape key (accessibility polish)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
+        mobileNav.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.focus();
+      }
+    });
+
     // Reveal on scroll
-    const els=[...document.querySelectorAll('.reveal')];
-    const io=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
-    },{threshold:.12});
-    els.forEach(el=>io.observe(el));
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    revealEls.forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
